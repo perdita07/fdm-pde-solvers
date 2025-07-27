@@ -65,7 +65,7 @@ Compares multiple numerical schemes for Burgers' equation (e.g., FTCS, upwind, L
 
 ---
 
-## 🧮 Requirements
+## Requirements
 
 ```bash
 pip install -r requirements.txt
@@ -78,7 +78,7 @@ Dependencies:
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 ```bash
 python filename.py
