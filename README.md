@@ -38,3 +38,13 @@ pip install -r requirements.txt
 Clone the repository and run the script: python heat_conduction_1D.py
 
 This will run the simulation for several values of N and generate plots.
+
+# Sample Outputs
+
+<img width="850" height="547" alt="image" src="https://github.com/user-attachments/assets/857839ee-900c-4a52-8a0b-3b482d06077f" />
+
+<img width="850" height="547" alt="image" src="https://github.com/user-attachments/assets/cd029881-c925-4ed6-8994-74b88b3160da" />
+
+<img width="850" height="547" alt="image" src="https://github.com/user-attachments/assets/ef960e1e-c991-4f55-bf86-9e673004c6d0" />
+
+
