@@ -31,11 +31,11 @@ The simulation uses an explicit time-stepping scheme and enforces the CFL condit
 - matplotlib
 
 Install dependencies with:
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 ## How to Run
 
-Clone the repository and run the script: python heat_conduction_1D.py
+Clone the repository and run the script: `python heat_conduction_1D.py`
 
 This will run the simulation for several values of N and generate plots.
 
