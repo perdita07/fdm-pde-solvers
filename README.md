@@ -1,50 +1,130 @@
-# 1D Heat Conduction Simulation using Explicit Finite Difference
+# Finite Difference Methods for PDEs in Python
 
-Simulates 1D transient heat conduction in a rod using the explicit finite difference method. Includes temperature profile plots, stability checks, and support for multiple grid resolutions.
+This repository contains Python scripts that numerically solve partial differential equations (PDEs) using finite difference methods (FDM). It includes explicit and implicit schemes for time-dependent problems and steady-state solvers for 1D and 2D cases.
 
-## Method
+---
 
-Solves the heat equation:
+## Contents
 
-∂u/∂t = α ∂²u/∂x²
+### 1D Heat Conduction
 
-Boundary conditions:
-- Left end fixed at 100°C
-- Initial temperature elsewhere: 25°C
+#### `heat_conduction_1D.py`
+Simulates 1D transient heat conduction using **explicit FDM**.
 
-The simulation uses an explicit time-stepping scheme and enforces the CFL condition:
+- Solves: ∂u/∂t = α ∂²u/∂x²
+- Boundary conditions: Dirichlet (fixed ends)
+- Features:
+  - Stability check (`α·dt/dx² < 0.5`)
+  - Supports multiple spatial resolutions (grid intervals)
+  - Visualises temperature evolution over time
 
-α · (dt / dx²) < 0.5
+#### `implicit_heat_conduction_1D.py`
+Simulates the same 1D transient heat conduction using the **implicit method**.
 
-## Features
+- Uses matrix inversion at each time step (better stability)
+- Allows larger time steps without CFL restriction
 
-- Explicit finite difference method for the heat equation
-- CFL stability check
-- Supports multiple values of N (number of grid intervals)
-- Plots temperature profiles at fixed time steps
-- Optionally saves plots as PNG files
+---
 
-## Requirements
+### 2D Steady-State Heat Equation
 
-- Python 3.x
-- numpy
-- matplotlib
+#### `2D_stead_state_heat_eqn.py`
+Solves the **Laplace equation** for a 2D rectangular plate using **iterative relaxation** (Jacobi/Gauss-Seidel).
 
-Install dependencies with:
-`pip install -r requirements.txt`
+- Assumes Dirichlet boundary conditions (constant T on edges)
+- Visual output using 3D surface and contour plots
 
-## How to Run
+---
 
-Clone the repository and run the script: `python heat_conduction_1D.py`
+### 2D Poisson Equation
 
-This will run the simulation for several values of N and generate plots.
+#### `2D_poisson_eqn.py`
+Solves the **2D Poisson equation**:
+Δu = f(x, y)
 
-# Sample Outputs
+- Includes predefined source terms (e.g., point sources or sinusoids)
+- Boundary conditions: fixed at all edges
+- Outputs a 3D plot of the potential field
 
-<img width="850" height="547" alt="image" src="https://github.com/user-attachments/assets/857839ee-900c-4a52-8a0b-3b482d06077f" />
+---
 
-<img width="850" height="547" alt="image" src="https://github.com/user-attachments/assets/cd029881-c925-4ed6-8994-74b88b3160da" />
+### 1D Burgers' Equation
 
-<img width="850" height="547" alt="image" src="https://github.com/user-attachments/assets/ef960e1e-c991-4f55-bf86-9e673004c6d0" />
+#### `burgers'.py`
+Solves the **nonlinear 1D Burgers' equation** using:
+- Explicit upwind method
+- With and without viscosity
+
+Useful for exploring shock formation and nonlinear wave behaviour.
+
+#### `burgers'_comparison.py`
+Compares multiple numerical schemes for Burgers' equation (e.g., FTCS, upwind, Lax, etc.)
+
+- Plots side-by-side the evolution of solutions
+- Highlights differences in numerical diffusion and stability
+
+---
+
+## 🧮 Requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+Dependencies:
+- `numpy`
+- `matplotlib`
+- `scipy` (optional, for matrix solvers)
+
+---
+
+## 🚀 How to Run
+
+```bash
+python filename.py
+```
+
+Each script is standalone and prompts or shows visualisations upon execution.
 
 
+
+---
+
+## Folder Structure
+
+```
+.
+├── 2D_poisson_eqn.py
+├── 2D_stead_state_heat_eqn.py
+├── burgers'.py
+├── burgers'_comparison.py
+├── heat_conduction_1D.py
+├── implicit_heat_conduction_1D.py
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Concepts Covered
+
+- Finite Difference Discretisation (Explicit & Implicit)
+- CFL condition & Stability analysis
+- Matrix-based solvers for PDEs
+- Time evolution vs Steady-State solvers
+- Nonlinear PDE handling (Burgers')
+
+
+
+## Notes
+
+- You can modify boundary/initial conditions directly in the scripts.
+- Useful for coursework, numerical methods projects, or as FDM templates.
+
+---
+
+## Future work
+
+- Add Crank–Nicolson method
+- Modularise shared plotting/utilities
+- Add test cases and validation with analytical solutions
